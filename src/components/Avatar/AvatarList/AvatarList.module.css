@@ -1,0 +1,13 @@
+.avatarList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.avatarItem {
+  background-color: #220782;
+  padding: 10px 20px;
+  border-radius: 10px;
+}

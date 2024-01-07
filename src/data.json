@@ -1,0 +1,9 @@
+[
+  {
+    "id": "id-1",
+    "name": "Serhii Leonov",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam consectetur iste, voluptatum laborum veniam dignissimos assumenda nostrum.Necessitatibus, laboriosam facere.",
+    "image": "https://img.championat.com/s/1350x900/news/big/e/t/poyavilis-pervye-kadry-seriala-avatar-legenda-ob-aange-premera-v-2024-godu_1687041545980927004.jpg",
+    "skills": ["HTML/CSS/SCSS", "React", "Django"]
+  }
+]
