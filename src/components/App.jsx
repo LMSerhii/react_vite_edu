@@ -10,22 +10,33 @@ export default function App() {
   //   </div>
   // );
 
-  const [clicks, setClicks] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [values, setValues] = useState({
+    x: 0,
+    y: 0,
+  });
 
-  const handleClick = () => {
-    setClicks(clicks + 1);
+  const updateX = () => {
+    setValues({
+      ...values,
+      x: values.x + 1,
+    });
   };
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
+  const updateY = () => {
+    setValues({
+      ...values,
+      y: values.y + 1,
+    });
   };
 
   return (
-    <>
-      <button onClick={handleClick}>Current: {clicks}</button>
-      <button onClick={handleToggle}>{isOpen ? 'Hide' : 'Show'}</button>
-      {isOpen && <p>Now you can see me!</p>}
-    </>
+    <div>
+      <p>
+        x: {values.x}, y: {values.y}
+      </p>
+
+      <button onClick={updateX}>Update x</button>
+      <button onClick={updateY}>Update y</button>
+    </div>
   );
 }
