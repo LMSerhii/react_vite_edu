@@ -1,26 +1,31 @@
+import { useState } from 'react';
 import './App.css';
 import data from '../data.json';
-import { Avatar } from './Avatar/Avatar';
+import { AvatarList } from './AvatarLIst/AvatarList';
 
 export default function App() {
+  // return (
+  //   <div className="app">
+  //     <AvatarList data={data} />
+  //   </div>
+  // );
+
+  const [clicks, setClicks] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setClicks(clicks + 1);
+  };
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="app">
-      <ul>
-        {data.map(user => {
-          return (
-            <li key={user.id}>
-              {
-                <Avatar
-                  name={user.name}
-                  text={user.text}
-                  image={user.image}
-                  skills={user.skills}
-                />
-              }
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <button onClick={handleClick}>Current: {clicks}</button>
+      <button onClick={handleToggle}>{isOpen ? 'Hide' : 'Show'}</button>
+      {isOpen && <p>Now you can see me!</p>}
+    </>
   );
 }
