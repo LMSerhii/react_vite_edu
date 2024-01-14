@@ -1,4 +1,3 @@
-import css from './Avatar.module.css';
 import { AvatarTitle } from './AvatarTitle/AvatarTitle';
 import { AvatarText } from './AvatarText/AvatarText';
 import { AvatarImage } from './AvatarImage/AvatarImage';

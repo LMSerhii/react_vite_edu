@@ -1,42 +1,26 @@
-import { useState } from 'react';
-import './App.css';
-import data from '../data.json';
-import { AvatarList } from './AvatarLIst/AvatarList';
+import { useState, useEffect } from 'react';
 
-export default function App() {
-  // return (
-  //   <div className="app">
-  //     <AvatarList data={data} />
-  //   </div>
-  // );
-
-  const [values, setValues] = useState({
-    x: 0,
-    y: 0,
+const App = () => {
+  const [clicks, setClicks] = useState(() => {
+    const savedClicks = window.localStorage.getItem('saved-clicks');
+    if (savedClicks !== null) {
+      return Number(savedClicks);
+    }
+    return 0;
   });
 
-  const updateX = () => {
-    setValues({
-      ...values,
-      x: values.x + 1,
-    });
-  };
-
-  const updateY = () => {
-    setValues({
-      ...values,
-      y: values.y + 1,
-    });
-  };
+  useEffect(() => {
+    window.localStorage.setItem('saved-clicks', clicks);
+  }, [clicks]);
 
   return (
     <div>
-      <p>
-        x: {values.x}, y: {values.y}
-      </p>
-
-      <button onClick={updateX}>Update x</button>
-      <button onClick={updateY}>Update y</button>
+      <button onClick={() => setClicks(clicks + 1)}>
+        You clicked {clicks} times
+      </button>
+      <button onClick={() => setClicks(0)}>Reset</button>
     </div>
   );
-}
+};
+
+export { App };

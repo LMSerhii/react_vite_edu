@@ -1,5 +1,3 @@
-import css from './AvatarButton.module.css';
-
 const buttonAvtion = () => {
   alert('Add to order');
 };
