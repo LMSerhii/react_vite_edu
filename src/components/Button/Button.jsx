@@ -1,15 +1,12 @@
-import { useState } from 'react';
-
-const Button = ({ children }) => {
-  const [clicks, setClicks] = useState(0);
-
-  const handleCkick = () => {
-    setClicks(clicks + 1);
-  };
-
+const Button = ({ className, onClick, children, disabled }) => {
   return (
-    <button type="button" onClick={handleCkick}>
-      {children}: {clicks}
+    <button
+      className={className}
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
     </button>
   );
 };
