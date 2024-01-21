@@ -1,23 +1,39 @@
 import css from './LoginForm.module.css';
+import { useId } from 'react';
 
-const handleSubmit = evt => {
-  evt.preventDefault();
-  const form = evt.target;
-  const { login, password } = form.elements;
+export const LoginForm = ({ onSubmit }) => {
+  const loginId = useId();
+  const passwordId = useId();
 
-  console.log(login, password);
+  const handleSubmit = evt => {
+    evt.preventDefault();
 
-  console.log(login.value, password.value);
+    const form = evt.target;
+    const { login, password } = form.elements;
 
-  form.reset();
-};
+    onSubmit({
+      login: login.value,
+      password: password.value,
+    });
 
-export const LoginForm = () => {
+    form.reset();
+  };
   return (
     <form className={css.loginForm} onSubmit={handleSubmit}>
-      <input type="text" name="login" />
-      <input type="password" name="password" />
-      <button type="submit">Login</button>
+      <label htmlFor={loginId}>Login</label>
+      <input className={css.input} type="text" name="login" id={loginId} />
+
+      <label htmlFor={passwordId}>Password</label>
+      <input
+        className={css.input}
+        type="password"
+        name="password"
+        id={passwordId}
+      />
+
+      <button className={css.btn} type="submit">
+        Login
+      </button>
     </form>
   );
 };
