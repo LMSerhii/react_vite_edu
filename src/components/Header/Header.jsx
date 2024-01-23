@@ -6,6 +6,7 @@ export const Header = ({
   clicks,
   setClicks,
   data,
+  lang,
   isNextDisabled,
   isPrevDisabled,
 }) => {
@@ -17,6 +18,7 @@ export const Header = ({
         isNextDisabled={isNextDisabled}
         isPrevDisabled={isPrevDisabled}
       />
+      <p style={{ color: 'black' }}>Language: {lang}</p>
       <Progress current={clicks + 1} total={data.length} />
     </div>
   );

@@ -1,15 +1,16 @@
 import { Reader } from './Reader/Reader';
 import { LoginForm } from './LoginForm/LoginForm';
 import { Button } from './Button/Button';
-import { SearchBar } from './SearchBar/SearchBar';
 import { useState } from 'react';
 import data from '../data/news.json';
 import './App.css';
+import { LangSwitcher } from './LangSwitcher/LangSwitcher';
 
 const App = () => {
   const [signIn, setSignIn] = useState(true);
   const [posts, setPosts] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
+  const [lang, setLang] = useState('uk');
 
   const handleSignIn = () => {
     setSignIn(true);
@@ -23,7 +24,7 @@ const App = () => {
     setPosts(true);
   };
 
-  const handleSearchBar = () => {
+  const handleLangSwitcher = () => {
     setSignIn(false);
     setSearchBar(true);
     setPosts(false);
@@ -36,17 +37,17 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="app">
       <div className="btns">
         <Button onClick={handleSignIn}>Sign in</Button>
         <Button onClick={handlePosts}>Posts</Button>
-        <Button onClick={handleSearchBar}>Search Bar</Button>
+        <Button onClick={handleLangSwitcher}>Lang Switcher</Button>
       </div>
 
       {signIn && <LoginForm onSubmit={handleLogin} />}
-      {posts && <Reader data={data} />}
-      {searchBar && <SearchBar />}
-    </>
+      {posts && <Reader data={data} lang={lang} />}
+      {searchBar && <LangSwitcher lang={lang} onSelect={setLang} />}
+    </div>
   );
 };
 

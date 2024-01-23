@@ -1,4 +1,3 @@
-import css from './Reader.module.css';
 import { Header } from '../Header/Header';
 import { ArticleView } from '../ArticleView/ArticleView';
 import { useState, useEffect } from 'react';
@@ -8,7 +7,7 @@ const getClicks = () => {
   return localClicks ? localClicks : 0;
 };
 
-const Reader = ({ data }) => {
+const Reader = ({ data, lang }) => {
   const [clicks, setClicks] = useState(getClicks);
   useEffect(() => {
     window.localStorage.setItem('article-idx', clicks);
@@ -19,11 +18,12 @@ const Reader = ({ data }) => {
   const isPrevDisabled = clicks === 0;
 
   return (
-    <div className={css.reader}>
+    <div>
       <Header
         data={data}
         clicks={clicks}
         setClicks={setClicks}
+        lang={lang}
         isNextDisabled={isNextDisabled}
         isPrevDisabled={isPrevDisabled}
       />
